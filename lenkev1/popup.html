@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Twitter Tweet Cleaner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root{
+      --bg:#0f1115; --card:#151823; --muted:#9aa4b2; --text:#e6e9ef; --accent:#6ea8fe; --accent-2:#22c55e; --danger:#ef4444;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,Arial,sans-serif}
+    .wrap{width:320px; padding:16px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); border:1px solid #222634; border-radius:var(--radius); padding:16px; box-shadow:0 10px 25px rgba(0,0,0,0.35)}
+    h1{font-size:18px;margin:0 0 12px 0;display:flex;align-items:center;gap:8px}
+    .subtitle{font-size:12px;color:var(--muted);margin-top:-6px;margin-bottom:12px}
+    .row{display:flex; gap:8px; align-items:center; justify-content:space-between; margin:10px 0}
+    label.switch{display:flex; align-items:center; gap:10px; font-size:14px}
+    input[type="checkbox"]{transform:scale(1.2)}
+    .slider-row{display:flex; align-items:center; gap:10px}
+    .slider-row input[type="range"]{flex:1}
+    .btns{display:flex; gap:10px; margin-top:12px}
+    button{flex:1; border:0; padding:10px 12px; border-radius:12px; font-weight:600; cursor:pointer; transition: transform .08s ease}
+    button:active{transform:translateY(1px)}
+    #startBtn{background:linear-gradient(90deg, var(--accent), #8b5cf6); color:white}
+    #stopBtn{background:linear-gradient(90deg, #ef4444, #f97316); color:white}
+    .footer{margin-top:12px;font-size:11px;color:var(--muted);text-align:center}
+    .pill{display:inline-flex;align-items:center;gap:6px;background:#1d2333;border:1px solid #2b3145;color:#b7c0cf;padding:6px 10px;border-radius:999px;font-size:12px}
+    .status{margin-top:10px; display:flex; align-items:center; justify-content:space-between}
+    .log{background:#0c0f16;border:1px solid #1b2133;border-radius:12px; padding:10px; height:90px; overflow:auto; font-size:12px; color:#c8d1e6}
+    .small{font-size:12px; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>🧹 Twitter Tweet Cleaner</h1>
+      <div class="subtitle">Suppression automatique de tweets sur Twitter/X. Ajuste les options ci‑dessous et lance/arrête à la volée.</div>
+
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="autoStart" checked> Lancer automatiquement sur Twitter</label>
+      </div>
+
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="autoscroll" checked> Autoscroll continu</label>
+      </div>
+
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="includeRetweets"> Inclure les retweets</label>
+      </div>
+
+      <div class="row">
+        <label class="switch"><input type="checkbox" id="includeReplies"> Inclure les réponses</label>
+      </div>
+
+      <div class="row slider-row">
+        <div class="small">Vitesse</div>
+        <input type="range" id="speed" min="100" max="1000" step="50" value="250" />
+        <div class="pill"><span id="speedLabel">250 ms</span></div>
+      </div>
+
+      <div class="btns">
+        <button id="startBtn">Démarrer</button>
+        <button id="stopBtn">Arrêter</button>
+      </div>
+
+      <div class="status">
+        <div class="pill">État: <strong id="statusText">Inconnu</strong></div>
+        <div class="small" id="countText">0 supprimé(s)</div>
+      </div>
+
+      <div class="log" id="log"></div>
+
+      <div class="footer">Developed by Selman “Clipsoov2” YK — Lenke du Baitcord</div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

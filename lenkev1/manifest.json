@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Twitter Tweet Cleaner",
+  "description": "SCRIPT SUPPRESSIONS TWEETS - Developed by Selman \"Clipsoov2\" YK. Également Lenke du Baitcord",
+  "version": "3.8",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://twitter.com/*",
+    "https://x.com/*",
+    "https://mobile.twitter.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*",
+        "https://mobile.twitter.com/*"
+      ],
+      "js": [
+        "auto.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
